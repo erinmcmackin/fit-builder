@@ -19,30 +19,18 @@ class Exercise {
 }
 
 class Exercises {
-  static public function find(){
-     //connect just once, not for every create/find
-    // $servername = 'localhost';
-    // $username = 'root';
-    // $password = 'root';
-    // $dbname = 'fit_builder';
-    //
-    // $mysql_connection = new mysqli($servername, $username, $password, $dbname);
-    //
-    // if($mysql_connection->connect_error){
-    //   $mysql_connection->close();
-    //   die('Connection Failed: ' . $mysql_connection->connect_error);
-    // } else {
-    //   $sql = "SELECT * FROM exercises;";
-    //   $results = $mysql_connection->query($sql);
-    //   return $results;
-    // }
+  static function find(){
+    // good practice to include $conn parameter to pg_query to prevent weird bugs
     $conn = pg_connect("dbname=fit_builder");
+    // declaring the sql statement in a separate file
     $query = file_get_contents(__DIR__ . '/../database/sql/exercises/find.sql');
     $result = pg_query($conn, $query);
     $exercises = array();
     $current_exercise = null;
+    // while there are results in the data fetch, keep running this code
     while($data = pg_fetch_object($result)){
       // if($current_exercise === null){
+        // creating a new exercise
         $current_exercise = new Exercise(intval($data->id), $data->title, intval($data->intensity), $data->focus, $data->description, $data->image);
         $exercises[] = $current_exercise;
       // }
@@ -50,24 +38,18 @@ class Exercises {
     return $exercises;
   }
 
-//   static public function create($title, $intensity, $focus, $description, $image){
-//     //connect just once, not for every create/find
-//     //put these in a properties file that gets ignored from git
-//   //   $servername = 'localhost';
-//   //   $username = 'root';
-//   //   $password = 'root';
-//   //   $dbname = 'fit_builder';
-//   //
-//   //   $mysql_connection = new mysqli($servername, $username, $password, $dbname);
-//   //
-//   //   if($mysql_connection->connect_error){
-//   //     die('Connection Failed: ' . $mysql_connection->connect_error);
-//   //   } else {
-//   //     $sql = "INSERT INTO exercises (title, intensity, focus, description, image) VALUES ('".$title."', '".$intensity."', '".$focus."', '".$description."', '".$image."');";
-//   //     $mysql_connection->query($sql);
-//   //   }
-//   //   $mysql_connection->close();
-//   // }
+  static function create($exercise){
+    $query = file_get_contents(__DIR__ . '/../database/sql/exercises/create.sql');
+    $result = pg_query_params($query, array($exercise->title, intval($exercise->intensity), $exercise->focus, $exercise->description, $exercise->image));
+
+    return self::find();
+  }
+
+  static function delete($id){
+    $query = file_get_contents(__DIR__ . '/../database/sql/exercises/delete.sql');
+    $result = pg_query_params($query, array($id));
+    return self::find();
+  }
 }
 
 

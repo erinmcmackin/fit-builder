@@ -21,7 +21,7 @@ if($_REQUEST['action'] === 'index'){
     $body = json_decode($requestBody);
     $updatedExercise = new Exercise(null, $body->title, $body->intensity, $body->focus, $body->description, $body->image);
     $allExercises = Exercises::update($_REQUEST['id'], $updatedExercise);
-    
+
     echo json_encode($allExercises);
 }
 ?>
