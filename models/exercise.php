@@ -1,23 +1,60 @@
 <?php
-Class Exercise {
+
+$dbconn = null;
+if(getenv('DATABASE_URL')){
+    $connectionConfig = parse_url(getenv('DATABASE_URL'));
+    $host = $connectionConfig['host'];
+    $user = $connectionConfig['user'];
+    $password = $connectionConfig['pass'];
+    $port = $connectionConfig['port'];
+    $dbname = trim($connectionConfig['path'],'/');
+    $dbconn = pg_connect(
+        "host=".$host." ".
+        "user=".$user." ".
+        "password=".$password." ".
+        "port=".$port." ".
+        "dbname=".$dbname
+    );
+} else {
+    $dbconn = pg_connect("host=localhost dbname=fit_builder");
+}
+
+class Exercise {
+    public $id;
+    public $title;
+    public $intensity;
+    public $focus;
+    public $description;
+    public $image;
+    public function __construct($id, $title, $intensity, $focus, $description, $image) {
+        $this->id = $id;
+        $this->title = $title;
+        $this->intensity = $intensity;
+        $this->focus = $focus;
+        $this->description = $description;
+        $this->image = $image;
+    }
+}
+
+Class Exercises {
     public $title;
     static public function create($title, $intensity, $focus, $description){
         //connect just once, not for every create/find
         //put these in a properties file that gets ignored from git
         $servername = 'localhost';
-        $username = 'erin';
-        $password = 'doon';
+        $username = 'root';
+        $password = 'root';
         $dbname = 'fit_builder';
 
-        $pdo = new PDO('mysql:host=localhost;port=8888;dbname=fit_builder', $username, $password);
+        $mysql_connection = new mysqli($servername, $username, $password, $dbname);
 
-        if($pdo->connect_error){
-            die('Connection Failed: ' . $pdo->connect_error);
+        if($mysql_connection->connect_error){
+            die('Connection Failed: ' . $mysql_connection->connect_error);
         } else {
-            $mysql = "INSERT INTO exercises (title, intensity, focus, description, image) VALUES ('".$title"', '.$intensity', '"$.focus"', '"$.description"', '"$.image"');";
-            $pdo->query($mysql);
+            $sql = "INSERT INTO exercises (title, intensity, focus, description, image) VALUES ('".$title."', '".$intensity."', '".$focus."', '".$description."', '".$image."');";
+            $mysql_connection->query($sql);
         }
-        $pdo->close();
+        $mysql_connection->close();
     }
 
     static public function find(){
@@ -27,15 +64,18 @@ Class Exercise {
         $password = 'root';
         $dbname = 'fit_builder';
 
-        $pdo = new PDO('mysql:host=localhost;port=8888;dbname=fit_builder', $username, $password);
+        $mysql_connection = new mysqli($servername, $username, $password, $dbname);
 
-        if($pdo->connect_error){
-            $pdo->close();
-            die('Connection Failed: ' . $pdo->connect_error);
+        if($mysql_connection->connect_error){
+            $mysql_connection->close();
+            die('Connection Failed: ' . $mysql_connection->connect_error);
         } else {
-            $mysql = "SELECT * FROM exercises;";
-            $results = $pdo->query($mysql);
+            $sql = "SELECT * FROM exercises;";
+            $results = $mysql_connection->query($sql);
             return $results;
         }
     }
 }
+
+
+?>
