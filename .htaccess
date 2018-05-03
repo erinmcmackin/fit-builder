@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteRule ^exercises$ controllers/exercise.php?action=index
+RewriteRule ^exercises/new$ controllers/exercise.php?action=new
+RewriteCond %{REQUEST_METHOD} ^POST$
+RewriteRule ^exercises$ controllers/exercise.php?action=create
