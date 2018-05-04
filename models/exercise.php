@@ -41,7 +41,6 @@ class Exercises {
   static function create($exercise){
     $query = file_get_contents(__DIR__ . '/../database/sql/exercises/create.sql');
     $result = pg_query_params($query, array($exercise->title, intval($exercise->intensity), $exercise->focus, $exercise->description, $exercise->image));
-
     return self::find();
   }
 
