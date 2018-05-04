@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-include_once __DIR__ . '/../models/exercise.php';
+include_once __DIR__ . '/../../../models/exercise.php';
 
 if($_REQUEST['action'] === 'index'){
     echo json_encode(Exercises::find());
