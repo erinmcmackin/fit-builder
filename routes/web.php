@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/exercises', function(){
+  RewriteRule ^exercises$ ../Http/Controllers/exercise.php?action=index
+  RewriteRule ^exercises/new$ ../Http/Controllers/exercise.php?action=new
+});

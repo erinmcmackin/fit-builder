@@ -2,14 +2,14 @@ RewriteEngine On
 
 # exercises routes
 RewriteCond %{REQUEST_METHOD} ^GET$
-RewriteRule ^exercises$ controllers/exercise.php?action=index
-RewriteRule ^exercises/new$ controllers/exercise.php?action=new
+RewriteRule ^exercises$ ../Http/Controllers/exercise.php?action=index
+RewriteRule ^exercises/new$ ../Http/Controllers/exercise.php?action=new
 
 RewriteCond %{REQUEST_METHOD} ^POST$
-RewriteRule ^exercises$ controllers/exercise.php?action=create
+RewriteRule ^exercises$ ../Http/Controllers/exercise.php?action=create
 
 RewriteCond %{REQUEST_METHOD} ^DELETE$
-RewriteRule ^exercises/([0-9]+)$ controllers/exercise.php?action=delete&id=$1
+RewriteRule ^exercises/([0-9]+)$ ../Http/Controllers/exercise.php?action=delete&id=$1
 
 RewriteCond %{REQUEST_METHOD} ^PUT$
-RewriteRule ^exercises/([0-9]+)$ controllers/exercise.php?action=update&id=$1
+RewriteRule ^exercises/([0-9]+)$ ../Http/Controllers/exercise.php?action=update&id=$1
