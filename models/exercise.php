@@ -50,6 +50,13 @@ class Exercises {
     $result = pg_query_params($query, array($id));
     return self::find();
   }
+
+  static function update($id, $updatedExercise){
+    $query = file_get_contents(__DIR__ . '/../database/sql/exercises/update.sql');
+    $result = pg_query_params($query, array($updatedExercise->title, intval($updatedExercise->intensity), $updatedExercise->focus, $updatedExercise->description, $updatedExercise->image, $id));
+    return self::find();
+  }
+
 }
 
 
