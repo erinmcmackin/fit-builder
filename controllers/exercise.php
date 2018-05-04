@@ -1,10 +1,13 @@
 <?php
+// die('test - 1');
 header('Content-Type: application/json');
+// die('test - line 3');
 include_once __DIR__ . '/../models/exercise.php';
 
+// die('test - line 4');
 if($_REQUEST['action'] === 'index'){
     echo json_encode(Exercises::find());
-} else if ($_REQUEST['action'] === 'post'){
+} else if ($_REQUEST['action'] === 'create'){
     $requestBody = file_get_contents('php://input');
     $body = json_decode($requestBody);
 
