@@ -1,41 +1,62 @@
 <?php
-Class Exercise {
-    public $title;
-    static public function create($title, $intensity, $focus, $description){
-        //connect just once, not for every create/find
-        //put these in a properties file that gets ignored from git
-        $servername = 'localhost';
-        $username = 'erin';
-        $password = 'doon';
-        $dbname = 'fit_builder';
+include_once __DIR__ . '/../database/db.php';
 
-        $pdo = new PDO('mysql:host=localhost;port=8888;dbname=fit_builder', $username, $password);
-
-        if($pdo->connect_error){
-            die('Connection Failed: ' . $pdo->connect_error);
-        } else {
-            $mysql = "INSERT INTO exercises (title, intensity, focus, description, image) VALUES ('".$title"', '.$intensity', '"$.focus"', '"$.description"', '"$.image"');";
-            $pdo->query($mysql);
-        }
-        $pdo->close();
-    }
-
-    static public function find(){
-         //connect just once, not for every create/find
-        $servername = 'localhost';
-        $username = 'root';
-        $password = 'root';
-        $dbname = 'fit_builder';
-
-        $pdo = new PDO('mysql:host=localhost;port=8888;dbname=fit_builder', $username, $password);
-
-        if($pdo->connect_error){
-            $pdo->close();
-            die('Connection Failed: ' . $pdo->connect_error);
-        } else {
-            $mysql = "SELECT * FROM exercises;";
-            $results = $pdo->query($mysql);
-            return $results;
-        }
-    }
+class Exercise {
+  public $id;
+  public $title;
+  public $intensity;
+  public $focus;
+  public $description;
+  public $image;
+  public function __construct($id, $title, $intensity, $focus, $description, $image) {
+    $this->id = $id;
+    $this->title = $title;
+    $this->intensity = $intensity;
+    $this->focus = $focus;
+    $this->description = $description;
+    $this->image = $image;
+  }
 }
+
+class Exercises {
+  static function find(){
+    // good practice to include $conn parameter to pg_query to prevent weird bugs
+    $conn = pg_connect("dbname=fit_builder");
+    // declaring the sql statement in a separate file
+    $query = file_get_contents(__DIR__ . '/../database/sql/exercises/find.sql');
+    $result = pg_query($conn, $query);
+    $exercises = array();
+    $current_exercise = null;
+    // while there are results in the data fetch, keep running this code
+    while($data = pg_fetch_object($result)){
+      // if($current_exercise === null){
+        // creating a new exercise
+        $current_exercise = new Exercise(intval($data->id), $data->title, intval($data->intensity), $data->focus, $data->description, $data->image);
+        $exercises[] = $current_exercise;
+      // }
+    }
+    return $exercises;
+  }
+
+  static function create($exercise){
+    $query = file_get_contents(__DIR__ . '/../database/sql/exercises/create.sql');
+    $result = pg_query_params($query, array($exercise->title, intval($exercise->intensity), $exercise->focus, $exercise->description, $exercise->image));
+    return self::find();
+  }
+
+  static function delete($id){
+    $query = file_get_contents(__DIR__ . '/../database/sql/exercises/delete.sql');
+    $result = pg_query_params($query, array($id));
+    return self::find();
+  }
+
+  static function update($id, $updatedExercise){
+    $query = file_get_contents(__DIR__ . '/../database/sql/exercises/update.sql');
+    $result = pg_query_params($query, array($updatedExercise->title, intval($updatedExercise->intensity), $updatedExercise->focus, $updatedExercise->description, $updatedExercise->image, $id));
+    return self::find();
+  }
+
+}
+
+
+?>

@@ -1,23 +1,30 @@
 <?php
-require('../models/exercise.php');
-Class ExerciseController {
-    public function indexPage(){
-        $exercises = Exercise::find();
-        require('../views/$exercises/index.php');
-    }
-    public function newPage(){
-        require('../views/exercises/new.php');
-    }
-    public function createAction(){
-        Exercise::create($_POST['title'], $_POST['intensity'], $_POST['focus'], $_POST['description'], $_POST['image']);
-        header('Location: ./');
-    }
+// die('test - 1');
+header('Content-Type: application/json');
+// die('test - line 3');
+include_once __DIR__ . '/../models/exercise.php';
+
+// die('test - line 4');
+if($_REQUEST['action'] === 'index'){
+    echo json_encode(Exercises::find());
+} else if ($_REQUEST['action'] === 'create'){
+    $requestBody = file_get_contents('php://input');
+    $body = json_decode($requestBody);
+
+    $newExercise = new Exercise(null, $body->title, $body->intensity, $body->focus, $body->description, $body->image);
+
+    $allExercises = Exercises::create($newExercise);
+
+    echo json_encode($allExercises);
+} else if ($_REQUEST['action'] === 'delete'){
+    $allExercises = Exercises::delete($_REQUEST['id']);
+    echo json_encode($allExercises);
+} else if ($_REQUEST['action'] === 'update'){
+    $requestBody = file_get_contents('php://input');
+    $body = json_decode($requestBody);
+    $updatedExercise = new Exercise(null, $body->title, $body->intensity, $body->focus, $body->description, $body->image);
+    $allExercises = Exercises::update($_REQUEST['id'], $updatedExercise);
+
+    echo json_encode($allExercises);
 }
-$new_exercise_controller = new ExerciseController();
-if($_GET['action']=='index'){
-    $new_exercise_controller->indexPage();
-} else if($_GET['action']=='new'){
-    $new_exercise_controller->newPage();
-} else if($_GET['action']=='create'){
-    $new_exercise_controller->createAction();
-}
+?>
