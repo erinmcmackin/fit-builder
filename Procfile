@@ -1,1 +1,1 @@
-web: php/bin/util/heroku-php-apache2
+web: php/bin/heroku-php-apache2
