@@ -1,9 +1,9 @@
 <div class="exercises-index">
-  <h1>hi</h1>
-  <p ng-include=" './public/partials/exercises/create.html' ">Add Exercise</p>
-  <ul>
-    <li ng-repeat="exercise in ctrl.exercises" ng-click="ctrl.openExerciseShow({{exercise.id}})">
-      {{exercise.title}}
-    </li>
-  </ul>
+  <h1>Exercises</h1>
+  <input type="text" name="filter-focus" placeholder="focus">
+  <input type="text" name="filter-intensity" placeholder="intensity">
+  <button ng-click="ctrl.changeInclude('exercises/create')" type="button" name="button">ADD EXERCISE</button>
+  <li ng-repeat="exercise in ctrl.exercises" ng-click="ctrl.openExerciseShow({{exercise.id}})">
+    {{exercise.title}}
+  </li>
 </div>

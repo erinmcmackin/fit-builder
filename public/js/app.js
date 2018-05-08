@@ -3,8 +3,7 @@ const app = angular.module('FitBuilder', []);
 app.controller('FitBuilder', ['$http', function($http){
 
   // the welcome page shows on load
-  this.includePath = './public/partials/welcome/welcome.html'
-  // './public/partials/welcome.html'
+  this.includePath = './public/partials/welcome/welcome.html';
 
   // =============
   // Path Include
@@ -33,6 +32,10 @@ app.controller('FitBuilder', ['$http', function($http){
   //
   // }
 
+  this.openExerciseCreate = ()=>{
+    this.includePath = './public/partials/exercises/create.html'
+  }
+
   this.createExercise = ()=>{
     $http(
       {
@@ -49,6 +52,7 @@ app.controller('FitBuilder', ['$http', function($http){
     ).then((response)=>{
       console.log(response);
       this.getExercises();
+      this.includePath = './public/partials/exercises/index.html'
     }), (error)=>{error}
   }; // closes createExercise
 
