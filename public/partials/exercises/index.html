@@ -1,6 +1,8 @@
-<div ng-class="exercises-container">
+<div class="exercises-index">
+  <h1>hi</h1>
+  <p ng-include=" './public/partials/exercises/create.html' ">Add Exercise</p>
   <ul>
-    <li ng-repeat="exercise in ctrl.exercises">
+    <li ng-repeat="exercise in ctrl.exercises" ng-click="ctrl.openExerciseShow({{exercise.id}})">
       {{exercise.title}}
     </li>
   </ul>

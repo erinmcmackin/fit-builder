@@ -29,23 +29,28 @@ app.controller('FitBuilder', ['$http', function($http){
     }); // closes $http
   }; // closes getExercises
 
-  // this.createExercise = ()=>{
-  //   $http(
-  //     {
-  //       method: 'POST',
-  //       url: '/exercises',
-  //       data: {
-  //         title: this.title,
-  //         intensity: this.intensity,
-  //         focus: this.focus,
-  //         description: this.description,
-  //         image: this.image
-  //       }
-  //     }
-  //   ).then((response)=>{
-  //     console.log(response);
-  //   }), (error)=>{error}
-  // }; // closes createExercise
+  // this.openExerciseShow = (exercise)=>{
+  //
+  // }
+
+  this.createExercise = ()=>{
+    $http(
+      {
+        method: 'POST',
+        url: '/exercises',
+        data: {
+          title: this.title,
+          intensity: this.intensity,
+          focus: this.focus,
+          description: this.description,
+          image: this.image
+        }
+      }
+    ).then((response)=>{
+      console.log(response);
+      this.getExercises();
+    }), (error)=>{error}
+  }; // closes createExercise
 
   this.getExercises();
 
