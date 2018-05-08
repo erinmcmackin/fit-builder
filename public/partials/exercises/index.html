@@ -11,11 +11,6 @@
     </header>
     <section>
         <ul>
-            <!-- <?php while($row = $exercises->fetch_object()): ?>
-                <li>
-                    Exercise today is <?php echo $row->title ?> with intensity <?php echo $row->intensity?>
-                </li>
-            <?php endwhile; ?> -->
             <li ng-repeat="exercise in ctrl.exercises">
               {{exercise.title}}
             </li>

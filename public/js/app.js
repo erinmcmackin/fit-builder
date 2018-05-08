@@ -2,17 +2,27 @@ const app = angular.module('FitBuilder', []);
 
 app.controller('FitBuilder', ['$http', function($http){
 
+  // the welcome page shows on load
+  this.includePath = './public/partials/welcome.html'
+  // './public/partials/welcome.html'
+
+  // =============
+  // Path Include
+  // =============
+  // changes which partial is shown on the page
+  this.changeInclude = (path)=>{
+    this.includePath = 'partials/' + path + '.html'
+  }
+
   // =============
   // Exercises
   // =============
 
   this.getExercises = ()=>{
-    console.log('what is happening');
     $http({
       method: 'GET',
-      url: '/models/exercise.php'
+      url: '/controllers/get-index.php'
     }).then((response)=>{
-      console.log(response);
       this.exercises = response.data;
     }, (error)=>{
       console.log(error);
@@ -36,5 +46,7 @@ app.controller('FitBuilder', ['$http', function($http){
   //     console.log(response);
   //   }), (error)=>{error}
   // }; // closes createExercise
+
+  this.getExercises();
 
 }]); // closes the app.controller
