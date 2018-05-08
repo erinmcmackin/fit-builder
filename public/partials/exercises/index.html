@@ -1,19 +1,7 @@
-<body>
-    <header>
-        <h1>Exercise Index Page</h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="exercises/new">Add Exercise</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <section>
-        <ul>
-            <li ng-repeat="exercise in ctrl.exercises">
-              {{exercise.title}}
-            </li>
-        </ul>
-    </section>
-</body>
+<div ng-class="exercises-container">
+  <ul>
+    <li ng-repeat="exercise in ctrl.exercises">
+      {{exercise.title}}
+    </li>
+  </ul>
+</div>

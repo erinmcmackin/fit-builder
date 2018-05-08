@@ -3,7 +3,7 @@ const app = angular.module('FitBuilder', []);
 app.controller('FitBuilder', ['$http', function($http){
 
   // the welcome page shows on load
-  this.includePath = './public/partials/welcome.html'
+  this.includePath = './public/partials/welcome/welcome.html'
   // './public/partials/welcome.html'
 
   // =============
@@ -11,7 +11,7 @@ app.controller('FitBuilder', ['$http', function($http){
   // =============
   // changes which partial is shown on the page
   this.changeInclude = (path)=>{
-    this.includePath = 'partials/' + path + '.html'
+    this.includePath = './public/partials/' + path + '.html'
   }
 
   // =============

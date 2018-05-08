@@ -9,6 +9,7 @@
   </head>
   <body ng-controller="FitBuilder as ctrl">
     <h1>Fit Builder</h1>
+    <div ng-include="'./public/partials/nav.html'"></div>
     <div ng-include="ctrl.includePath"></div>
   </body>
 </html>
