@@ -2,8 +2,8 @@ RewriteEngine On
 
 # exercises routes
 RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteRule ^exercises/([0-9]+)$ controllers/exercise.php?action=new&id=$1
 RewriteRule ^exercises$ controllers/exercise.php?action=index
-RewriteRule ^exercises/new$ controllers/exercise.php?action=new
 
 RewriteCond %{REQUEST_METHOD} ^POST$
 RewriteRule ^exercises$ controllers/exercise.php?action=create
