@@ -4,6 +4,7 @@ app.controller('FitBuilder', ['$http', function($http){
 
   // the welcome page shows on load
   this.includePath = './public/partials/welcome/welcome.html';
+  this.exercise = '';
 
   // =============
   // Path Include
@@ -64,6 +65,20 @@ app.controller('FitBuilder', ['$http', function($http){
       console.log(error);
     }); // closes $http
   } // closes getShowExercise
+
+  this.deleteExercise = (exercise)=>{
+    console.log(exercise);
+    $http({
+      method: 'DELETE',
+      url: 'exercises/' + exercise.id
+    }).then((response)=>{
+      this.exercise = response.data;
+      this.getExercises();
+      this.includePath = './public/partials/exercises/index.html';
+    }, (error)=>{
+      console.log(error);
+    }); // closes $http
+  }
 
   this.getExercises();
 
