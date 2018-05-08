@@ -1,3 +1,22 @@
 <div class="exercises-show">
-  <h1>exercise show</h1>
+  <h1>{{ctrl.exercise.title}}</h1>
+  <img ng-src="{{ctrl.exercise.image}}"></img>
+  <div>
+    Intensity
+    <div>
+      {{ctrl.exercise.intensity}}
+    </div>
+  </div>
+  <div>
+    Focus
+    <div>
+      {{ctrl.exercise.focus}}
+    </div>
+  </div>
+  <div>
+    How To
+    <div>
+      {{ctrl.exercise.description}}
+    </div>
+  </div>
 </div>

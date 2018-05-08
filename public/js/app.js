@@ -20,17 +20,13 @@ app.controller('FitBuilder', ['$http', function($http){
   this.getExercises = ()=>{
     $http({
       method: 'GET',
-      url: '/controllers/get-index.php'
+      url: '/exercises'
     }).then((response)=>{
       this.exercises = response.data;
     }, (error)=>{
       console.log(error);
     }); // closes $http
   }; // closes getExercises
-
-  // this.openExerciseShow = (exercise)=>{
-  //
-  // }
 
   this.openExerciseCreate = ()=>{
     this.includePath = './public/partials/exercises/create.html'
@@ -55,6 +51,19 @@ app.controller('FitBuilder', ['$http', function($http){
       this.includePath = './public/partials/exercises/index.html'
     }), (error)=>{error}
   }; // closes createExercise
+
+  this.getShowExercise = (exercise)=>{
+    $http({
+      method: 'GET',
+      url: 'exercises/' + exercise.id
+    }).then((response)=>{
+      this.exercise = response.data;
+      console.log(this.exercise);
+      this.includePath = './public/partials/exercises/show.html'
+    }, (error)=>{
+      console.log(error);
+    }); // closes $http
+  } // closes getShowExercise
 
   this.getExercises();
 

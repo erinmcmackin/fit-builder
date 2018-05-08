@@ -3,7 +3,9 @@
   <input type="text" name="filter-focus" placeholder="focus">
   <input type="text" name="filter-intensity" placeholder="intensity">
   <button ng-click="ctrl.changeInclude('exercises/create')" type="button" name="button">ADD EXERCISE</button>
-  <li ng-repeat="exercise in ctrl.exercises" ng-click="ctrl.openExerciseShow({{exercise.id}})">
-    {{exercise.title}}
-  </li>
+  <div ng-repeat="exercise in ctrl.exercises">
+    <div ng-click="ctrl.getShowExercise(exercise)" class="exercise-index-image">
+      <img ng-src="{{exercise.image}}"></img>
+    </div>
+  </div>
 </div>
