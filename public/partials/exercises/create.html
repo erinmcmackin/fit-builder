@@ -1,0 +1,15 @@
+<div class="exercises-create">
+  <form class="create-form" ng-submit="ctrl.createExercise()">
+    <label for="title">Title</label>
+    <input ng-model="ctrl.title" type="text" name="title"/>
+    <label for="intensity">Intensity (1-10)</label>
+    <input ng-model="ctrl.intensity" type="number" name="intensity"/>
+    <label for="focus">Focus</label>
+    <input ng-model="ctrl.focus" type="text" name="focus"/>
+    <label for="description">Description</label>
+    <input ng-model="ctrl.description" type="text" name="description"/>
+    <label for="image">Image</label>
+    <input ng-model="ctrl.image" type="text" name="image"/>
+    <button type="submit">Add Exercise</button>
+  </form>
+</div>
