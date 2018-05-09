@@ -11,7 +11,12 @@ app.controller('FitBuilder', ['$http', function($http){
   // =============
   // changes which partial is shown on the page
   this.changeInclude = (path)=>{
-    this.includePath = './public/partials/' + path + '.html'
+    if(path === 'exercises/index'){
+      this.getExercises();
+      this.includePath = './public/partials/exercises/index.html'
+    } else {
+      this.includePath = './public/partials/' + path + '.html'
+    }
   }
 
   // =============
@@ -30,7 +35,7 @@ app.controller('FitBuilder', ['$http', function($http){
   }; // closes getExercises
 
   this.openExerciseCreate = ()=>{
-    this.includePath = './public/partials/exercises/create.html'
+    this.includePath = './public/partials/exercises/create.html';
   }
 
   this.createExercise = ()=>{
@@ -47,19 +52,18 @@ app.controller('FitBuilder', ['$http', function($http){
         }
       }
     ).then((response)=>{
-      console.log(response);
       this.getExercises();
       this.includePath = './public/partials/exercises/index.html'
     }), (error)=>{error}
   }; // closes createExercise
 
   this.getShowExercise = (exercise)=>{
+    this.exercise = exercise;
     $http({
       method: 'GET',
       url: 'exercises/' + exercise.id
     }).then((response)=>{
       this.exercise = response.data;
-      console.log(this.exercise);
       this.includePath = './public/partials/exercises/show.html'
     }, (error)=>{
       console.log(error);
@@ -67,7 +71,6 @@ app.controller('FitBuilder', ['$http', function($http){
   } // closes getShowExercise
 
   this.deleteExercise = (exercise)=>{
-    console.log(exercise);
     $http({
       method: 'DELETE',
       url: 'exercises/' + exercise.id
@@ -78,6 +81,29 @@ app.controller('FitBuilder', ['$http', function($http){
     }, (error)=>{
       console.log(error);
     }); // closes $http
+  }
+
+  this.openExerciseEdit = ()=>{
+    console.log(this.exercise.intensity);
+    this.includePath = './public/partials/exercises/edit.html';
+  }
+
+  this.editExercise = (exercise)=>{
+    $http(
+      {
+        method: 'PUT',
+        url: 'exercises/' + exercise.id,
+        data: {
+          title: this.updatedTitle,
+          intensity: this.updatedIntensity,
+          focus: this.updatedFocus,
+          description: this.updatedDescription,
+          image: this.updatedImage
+        }
+      }
+    ).then((response)=>{
+      this.getShowExercise(this.exercise);
+    }), (error)=>{error}
   }
 
   this.getExercises();
