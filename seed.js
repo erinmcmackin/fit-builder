@@ -20,6 +20,8 @@ INSERT INTO exercises (title, intensity, focus, description, image) VALUES ('Pil
 
 CREATE TABLE workouts (id SERIAL, title VARCHAR(32), intensity INT, focus TEXT, description TEXT, image TEXT, exercises TEXT []);
 
-INSERT INTO workouts (title, intensity, focus, description, image, exercises) VALUES ('Tuesday Barre', 6, 'full-body', 'a mix of ballet barre and pilates', 'https://assets.rbl.ms/17432052/980x.jpg', '{exercise1, exercise2}');
+INSERT INTO workouts (title, intensity, focus, description, image, exercises) VALUES ('Tuesday Barre', 6, 'full-body', 'a mix of ballet barre and pilates', 'https://assets.rbl.ms/17432052/980x.jpg', '{"exercise1", "exercise2"}');
 
 INSERT INTO workouts (title, intensity, focus, description, image, exercises) VALUES ('Thursday Pilates', 8, 'core', 'a mix of chair and tower to target the core', 'https://s3.amazonaws.com/s3.pilates.com/img/store/reformer/hero-01.png', '{exercise3, exercise4}');
+
+INSERT INTO workouts (title, intensity, focus, description, image, exercises) VALUES ('BeyondBarre', 6, 'full-body', 'a mix of ballet barre and pilates', 'https://assets.rbl.ms/17432052/980x.jpg', '{"exercise1", "exercise2"}');

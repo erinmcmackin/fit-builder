@@ -51,8 +51,9 @@ class Workouts {
 
   static function create($workout){
     $query = file_get_contents(__DIR__ . '/../database/sql/workouts/create.sql');
-    $result = pg_query_params($query, array($workout->title, intval($workout->intensity), $workout->focus, $workout->description, $workout->image, array($workout->exercises)));
-    return self::find();
+    $result = pg_query_params($query, array($workout->title, intval($workout->intensity), $workout->focus, $workout->description, $workout->image, $workout->exercises));
+    // return self::find();
+    return $result;
   }
 
   static function delete($id){
@@ -63,7 +64,7 @@ class Workouts {
 
   static function update($id, $updatedWorkout){
     $query = file_get_contents(__DIR__ . '/../database/sql/workouts/update.sql');
-    $result = pg_query_params($query, array($updatedWorkout->title, intval($updatedWorkout->intensity), $updatedWorkout->focus, $updatedWorkout->description, $updatedWorkout->image, array($updatedWorkout->exercises), $id));
+    $result = pg_query_params($query, array($updatedWorkout->title, intval($updatedWorkout->intensity), $updatedWorkout->focus, $updatedWorkout->description, $updatedWorkout->image, $updatedWorkout->exercises, $id));
     return self::find();
   }
 
