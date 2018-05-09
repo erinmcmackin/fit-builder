@@ -1,0 +1,23 @@
+<div class="exercises-edit">
+  <h1>Edit Exercise</h1>
+  <form ng-submit="ctrl.editExercise(ctrl.exercise)" class="edit-exercise-form" method="put">
+    <!-- TITLE -->
+    <label for="title">Title</label>
+    <input ng-model="ctrl.updatedTitle" type="text" name="title" value="{{ctrl.exercise.title}}" placeholder="{{ctrl.exercise.title}}">
+    <!-- INTENSITY -->
+    <label for="intensity">Intensity</label>
+    <input ng-model="ctrl.updatedIntensity" type="integer" name="intensity" value="{{ctrl.exercise.intensity}}" placeholder="{{ctrl.exercise.intensity}}">
+    <!-- FOCUS -->
+    <label for="focus">Focus</label>
+    <input ng-model="ctrl.updatedFocus" type="text" name="focus" value="{{ctrl.exercise.focus}}" placeholder="{{ctrl.exercise.focus}}">
+    <!-- DESCRIPTION -->
+    <label for="description">How To</label>
+    <input ng-model="ctrl.updatedDescription" type="text" name="description" value="{{ctrl.exercise.description}}" placeholder="{{ctrl.exercise.description}}">
+    <!-- IMAGE -->
+    <label for="image">Image URL</label>
+    <input ng-model="ctrl.updatedImage" type="text" name="image" value="{{ctrl.exercise.image}}"  placeholder="{{ctrl.exercise.image}}">
+    <!-- SUBMIT -->
+    <button type="submit">Submit</button>
+  </form>
+  <button ng-click="ctrl.changeInclude('exercises/index')" type="button" name="button">CANCEL</button>
+</div>

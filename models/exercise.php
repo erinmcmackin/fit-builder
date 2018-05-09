@@ -38,6 +38,15 @@ class Exercises {
     return $exercises;
   }
 
+  static function findShow($id){
+    // declaring the sql statement in a separate file
+    $query = file_get_contents(__DIR__ . '/../database/sql/exercises/show.sql');
+    $result = pg_query_params($query, array($id));
+    $current_exercise = null;
+    $data = pg_fetch_object($result);
+    return $data;
+  }
+
   static function create($exercise){
     $query = file_get_contents(__DIR__ . '/../database/sql/exercises/create.sql');
     $result = pg_query_params($query, array($exercise->title, intval($exercise->intensity), $exercise->focus, $exercise->description, $exercise->image));
