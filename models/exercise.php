@@ -44,13 +44,15 @@ class Exercises {
     $result = pg_query_params($query, array($id));
     $current_exercise = null;
     $data = pg_fetch_object($result);
-    return $data;
+    $current_exercise = new Exercise(intval($data->id), $data->title, intval($data->intensity), $data->focus, $data->description, $data->image);
+    return $current_exercise;
   }
 
   static function create($exercise){
     $query = file_get_contents(__DIR__ . '/../database/sql/exercises/create.sql');
     $result = pg_query_params($query, array($exercise->title, intval($exercise->intensity), $exercise->focus, $exercise->description, $exercise->image));
     return self::find();
+    // die('test - line 55');
   }
 
   static function delete($id){

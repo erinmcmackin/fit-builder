@@ -1,3 +1,7 @@
+// ==========
+// EXERCISES
+// ==========
+
 // MySQL
 CREATE TABLE exercises (id int NOT NULL AUTO_INCREMENT, title VARCHAR(32), intensity TINYINT, focus TINYTEXT, description TEXT, image TEXT, PRIMARY KEY (ID));
 
@@ -18,10 +22,30 @@ INSERT INTO exercises (title, intensity, focus, description, image) VALUES ('Pil
     "image": "http://ironoctopusfitness.com/wp-content/uploads/2017/10/wall-sit.jpg"
 }
 
-CREATE TABLE workouts (id SERIAL, title VARCHAR(32), intensity INT, focus TEXT, description TEXT, image TEXT, exercises TEXT []);
 
+// ==========
+// WORKOUTS
+// ==========
+
+CREATE TABLE workouts (id SERIAL, title VARCHAR(32), intensity INT, focus TEXT, description TEXT, image TEXT);
+
+// with exercises
 INSERT INTO workouts (title, intensity, focus, description, image, exercises) VALUES ('Tuesday Barre', 6, 'full-body', 'a mix of ballet barre and pilates', 'https://assets.rbl.ms/17432052/980x.jpg', '{"exercise1", "exercise2"}');
 
 INSERT INTO workouts (title, intensity, focus, description, image, exercises) VALUES ('Thursday Pilates', 8, 'core', 'a mix of chair and tower to target the core', 'https://s3.amazonaws.com/s3.pilates.com/img/store/reformer/hero-01.png', '{exercise3, exercise4}');
 
 INSERT INTO workouts (title, intensity, focus, description, image, exercises) VALUES ('BeyondBarre', 6, 'full-body', 'a mix of ballet barre and pilates', 'https://assets.rbl.ms/17432052/980x.jpg', '{"exercise1", "exercise2"}');
+
+// without exercises
+INSERT INTO workouts (title, intensity, focus, description, image) VALUES ('Tuesday Barre', 6, 'full-body', 'a mix of ballet barre and pilates', 'https://assets.rbl.ms/17432052/980x.jpg');
+
+INSERT INTO workouts (title, intensity, focus, description, image) VALUES ('Thursday Pilates', 8, 'core', 'a mix of chair and tower to target the core', 'https://s3.amazonaws.com/s3.pilates.com/img/store/reformer/hero-01.png');
+
+INSERT INTO workouts (title, intensity, focus, description, image) VALUES ('BeyondBarre', 6, 'full-body', 'a mix of ballet barre and pilates', 'https://assets.rbl.ms/17432052/980x.jpg');
+
+
+// ==========
+// JOIN
+// ==========
+
+CREATE TABLE joins (id SERIAL, workout_id INT, exercise_id INT);
