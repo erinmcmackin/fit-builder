@@ -27,6 +27,7 @@ class Workouts {
   static function find(){
     // good practice to include $conn parameter to pg_query to prevent weird bugs
     // $conn = pg_connect("dbname=fit_builder");
+    $conn = pg_connect(getenv('DATABASE_URL'));
     // $conn = null;
     //   if(getenv('DATABASE_URL')){
     //     $connectionConfig = parse_url(getenv('DATABASE_URL'));
@@ -48,8 +49,8 @@ class Workouts {
     //   }
     // declaring the sql statement in a separate file
     $query = file_get_contents(__DIR__ . '/../database/sql/workouts/find.sql');
-    $result = pg_query($query);
-    // $result = pg_query($dbconn, $query);
+    // $result = pg_query($query);
+    $result = pg_query($conn, $query);
     $workouts = array();
     $current_workout = null;
     // while there are results in the data fetch, keep running this code
