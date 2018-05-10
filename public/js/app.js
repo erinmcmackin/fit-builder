@@ -65,6 +65,7 @@ app.controller('FitBuilder', ['$http', function($http){
       method: 'GET',
       url: 'exercises/' + exercise.id
     }).then((response)=>{
+      console.log(response);
       this.exercise = response.data;
       this.includePath = './public/partials/exercises/show.html'
     }, (error)=>{
@@ -153,6 +154,7 @@ app.controller('FitBuilder', ['$http', function($http){
       method: 'GET',
       url: 'workouts/' + workout.id
     }).then((response)=>{
+      console.log(response);
       this.workout = response.data;
       this.includePath = './public/partials/workouts/show.html'
     }, (error)=>{
@@ -199,8 +201,8 @@ app.controller('FitBuilder', ['$http', function($http){
   // =============
   // ON LOADS
   // =============
-  //
-  // this.getExercises();
-  // this.getWorkouts();
+
+  this.getExercises();
+  this.getWorkouts();
 
 }]); // closes the app.controller

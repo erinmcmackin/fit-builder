@@ -28,37 +28,9 @@ class Workouts {
   static function find(){
     // good practice to include $conn parameter to pg_query to prevent weird bugs
     // $conn = pg_connect("dbname=fit_builder");
-    // $conn = pg_connect(getenv('DATABASE_URL'));
-    // $conn = null;
-    //   if(getenv('DATABASE_URL')){
-    //     $connectionConfig = parse_url(getenv('DATABASE_URL'));
-    //     $host = $connectionConfig['host'];
-    //     $user = $connectionConfig['user'];
-    //     $password = $connectionConfig['pass'];
-    //     $port = $connectionConfig['port'];
-    //     $dbname = trim($connectionConfig['path'],'/');
-    //     $conn = pg_connect(
-    //       "host=".$host." ".
-    //       "user=".$user." ".
-    //       "password=".$password." ".
-    //       "port=".$port." ".
-    //       "dbname=".$dbname
-    //     );
-    //     // $dbconn = pg_connect(getenv('DATABASE_URL'));
-    //   } else {
-    //     $conn = pg_connect("host=localhost dbname=fit_builder");
-    //   }
-    // declaring the sql statement in a separate file
-    // $dbconn = pg_connect(
-    //   "host=".$host." ".
-    //   "user=".$user." ".
-    //   "password=".$password." ".
-    //   "port=".$port." ".
-    //   "dbname=".$dbname
-    // );
     $query = file_get_contents(__DIR__ . '/../database/sql/workouts/find.sql');
     $result = pg_query($query);
-    // $result = pg_query($dbconn, $query);
+    // $result = pg_query($conn, $query);
     $workouts = array();
     $current_workout = null;
     // while there are results in the data fetch, keep running this code
@@ -79,10 +51,18 @@ class Workouts {
     $result = pg_query_params($query, array($id));
     $current_workout = null;
     $data = pg_fetch_object($result);
-    if($result["exercise_ex_id"]){
-      $current_workout = new Workout(intval($data->id), $data->title, intval($data->intensity), $data->focus, $data->description, $data->image, $data->exercise_ex_id);
-    } else {
-      $current_workout = new Workout(intval($data->id), $data->title, intval($data->intensity), $data->focus, $data->description, $data->image);
+    // if($result["exercise_ex_id"]){
+    //   $current_workout = new Workout(intval($data->id), $data->title, intval($data->intensity), $data->focus, $data->description, $data->image, $data->exercise_ex_id);
+    // } else {
+    //   $current_workout = new Workout(intval($data->id), $data->title, intval($data->intensity), $data->focus, $data->description, $data->image);
+    // }
+    $current_workout = new Workout(intval($data->workout_id), $data->workout_title, intval($data->workout_intensity), $data->workout_focus, $data->workout_description, $data->workout_image);
+    $current_workout->exercises = [];
+
+    if($data->joins_id){
+      $new_exercise = new Exercise(intval($data->exercise_ex_id), $data->exercise_title, intval($data->exercise_intensity), $data->exercise_focus, $data->exercise_description, $data->exercise_image);
+
+      $current_workout->exercises[] = $new_exercise;
     }
 
     return $current_workout;
