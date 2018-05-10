@@ -4,12 +4,13 @@ RewriteEngine On
 # EXERCISE ROUTES
 # ===========
 
+
+RewriteCond %{REQUEST_METHOD} ^POST$
+RewriteRule ^exercises$ controllers/exercise.php?action=post
+
 RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteRule ^exercises/([0-9]+)$ controllers/exercise.php?action=new&id=$1
 RewriteRule ^exercises$ controllers/exercise.php?action=index
-
-RewriteCond %{REQUEST_METHOD} ^POST$
-RewriteRule ^exercises$ controllers/exercise.php?action=create
 
 RewriteCond %{REQUEST_METHOD} ^DELETE$
 RewriteRule ^exercises/([0-9]+)$ controllers/exercise.php?action=delete&id=$1
@@ -22,12 +23,12 @@ RewriteRule ^exercises/([0-9]+)$ controllers/exercise.php?action=update&id=$1
 # WORKOUT ROUTES
 # ===========
 
+RewriteCond %{REQUEST_METHOD} ^POST$
+RewriteRule ^workouts$ controllers/workout.php?action=post
+
 RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteRule ^workouts/([0-9]+)$ controllers/workout.php?action=new&id=$1
 RewriteRule ^workouts$ controllers/workout.php?action=index
-
-RewriteCond %{REQUEST_METHOD} ^POST$
-RewriteRule ^workouts$ controllers/workout.php?action=create
 
 RewriteCond %{REQUEST_METHOD} ^DELETE$
 RewriteRule ^workouts/([0-9]+)$ controllers/workout.php?action=delete&id=$1

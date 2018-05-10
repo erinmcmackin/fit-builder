@@ -5,9 +5,10 @@ app.controller('FitBuilder', ['$http', function($http){
   // the welcome page shows on load
   this.includePath = './public/partials/welcome/welcome.html';
   this.exercise = '';
+  this.workout = '';
 
   // =============
-  // Path Include
+  // PATH INCLUDE
   // =============
   // changes which partial is shown on the page
   this.changeInclude = (path)=>{
@@ -20,7 +21,7 @@ app.controller('FitBuilder', ['$http', function($http){
   }
 
   // =============
-  // Exercises
+  // EXERCISES
   // =============
 
   this.getExercises = ()=>{
@@ -84,7 +85,6 @@ app.controller('FitBuilder', ['$http', function($http){
   }
 
   this.openExerciseEdit = ()=>{
-    console.log(this.exercise.intensity);
     this.includePath = './public/partials/exercises/edit.html';
   }
 
@@ -106,6 +106,100 @@ app.controller('FitBuilder', ['$http', function($http){
     }), (error)=>{error}
   }
 
+  // =============
+  // WORKOUTS
+  // =============
+
+  this.getWorkouts = ()=>{
+    $http({
+      method: 'GET',
+      url: '/workouts'
+    }).then((response)=>{
+      this.workouts = response.data;
+    }, (error)=>{
+      console.log(error);
+    }); // closes $http
+  }; // closes getWorkouts
+
+  this.openWorkoutCreate = ()=>{
+    this.includePath = './public/partials/workouts/create.html';
+  }
+
+  this.createWorkout = ()=>{
+    $http(
+      {
+        method: 'POST',
+        url: '/workouts',
+        data: {
+          title: this.title,
+          intensity: this.intensity,
+          focus: this.focus,
+          description: this.description,
+          image: this.image,
+          exercises: this.exercises
+        }
+      }
+    ).then((response)=>{
+      this.getWorkouts();
+      this.includePath = './public/partials/workouts/index.html'
+    }), (error)=>{error}
+  }; // closes createWorkout
+
+  this.getShowWorkout = (workout)=>{
+    console.log(workout);
+    this.workout = workout;
+    $http({
+      method: 'GET',
+      url: 'workouts/' + workout.id
+    }).then((response)=>{
+      this.workout = response.data;
+      this.includePath = './public/partials/workouts/show.html'
+    }, (error)=>{
+      console.log(error);
+    }); // closes $http
+  } // closes getShowWorkout
+
+  this.deleteWorkout = (workout)=>{
+    $http({
+      method: 'DELETE',
+      url: 'workouts/' + workout.id
+    }).then((response)=>{
+      this.workout = response.data;
+      this.getWorkouts();
+      this.includePath = './public/partials/workouts/index.html';
+    }, (error)=>{
+      console.log(error);
+    }); // closes $http
+  }
+
+  this.openWorkoutEdit = ()=>{
+    this.includePath = './public/partials/workouts/edit.html';
+  }
+
+  this.editWorkout = (workout)=>{
+    $http(
+      {
+        method: 'PUT',
+        url: 'workouts/' + workout.id,
+        data: {
+          title: this.updatedTitle,
+          intensity: this.updatedIntensity,
+          focus: this.updatedFocus,
+          description: this.updatedDescription,
+          image: this.updatedImage,
+          exercises: this.updatedExercises
+        }
+      }
+    ).then((response)=>{
+      this.getShowWorkout(this.workout);
+    }), (error)=>{error}
+  }
+
+  // =============
+  // ON LOADS
+  // =============
+
   this.getExercises();
+  this.getWorkouts();
 
 }]); // closes the app.controller
