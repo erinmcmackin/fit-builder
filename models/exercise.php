@@ -21,10 +21,30 @@ class Exercise {
 class Exercises {
   static function find(){
     // good practice to include $conn parameter to pg_query to prevent weird bugs
-    $conn = pg_connect("dbname=fit_builder");
+    // $conn = pg_connect("dbname=fit_builder");
+    // $conn = null;
+    //   if(getenv('DATABASE_URL')){
+    //     $connectionConfig = parse_url(getenv('DATABASE_URL'));
+    //     $host = $connectionConfig['host'];
+    //     $user = $connectionConfig['user'];
+    //     $password = $connectionConfig['pass'];
+    //     $port = $connectionConfig['port'];
+    //     $dbname = trim($connectionConfig['path'],'/');
+    //     $conn = pg_connect(
+    //       "host=".$host." ".
+    //       "user=".$user." ".
+    //       "password=".$password." ".
+    //       "port=".$port." ".
+    //       "dbname=".$dbname
+    //     );
+    //     // $dbconn = pg_connect(getenv('DATABASE_URL'));
+    //   } else {
+    //     $conn = pg_connect("host=localhost dbname=fit_builder");
+    //   }
     // declaring the sql statement in a separate file
     $query = file_get_contents(__DIR__ . '/../database/sql/exercises/find.sql');
-    $result = pg_query($conn, $query);
+    // $result = pg_query($conn, $query);
+    $result = pg_query($dbconn, $query);
     $exercises = array();
     $current_exercise = null;
     // while there are results in the data fetch, keep running this code
