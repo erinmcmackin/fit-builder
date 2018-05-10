@@ -29,6 +29,7 @@ app.controller('FitBuilder', ['$http', function($http){
       method: 'GET',
       url: '/exercises'
     }).then((response)=>{
+      // console.log(response);
       this.exercises = response.data;
     }, (error)=>{
       console.log(error);
@@ -192,14 +193,14 @@ app.controller('FitBuilder', ['$http', function($http){
       }
     ).then((response)=>{
       this.getShowWorkout(this.workout);
-    }), (error)=>{error}
+    }), (error)=>{console.log(error)}
   }
 
   // =============
   // ON LOADS
   // =============
-
-  this.getExercises();
-  this.getWorkouts();
+  //
+  // this.getExercises();
+  // this.getWorkouts();
 
 }]); // closes the app.controller
