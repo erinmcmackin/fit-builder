@@ -1,0 +1,30 @@
+<div class="workouts-show">
+  <h1>{{ctrl.workout.title}}</h1>
+  <img ng-src="{{ctrl.workout.image}}"></img>
+  <div>
+    Intensity
+    <div>
+      {{ctrl.workout.intensity}}
+    </div>
+  </div>
+  <div>
+    Focus
+    <div>
+      {{ctrl.workout.focus}}
+    </div>
+  </div>
+  <div>
+    How To
+    <div>
+      {{ctrl.workout.description}}
+    </div>
+  </div>
+  <!-- <div>
+    Exercises
+    <div ng-repeat="exercise in ctrl.workout.exercises">
+      {{exercise.title}}
+    </div>
+  </div> -->
+  <button ng-click="ctrl.openWorkoutEdit(ctrl.workout)" type="button" name="button">EDIT</button>
+  <button ng-click="ctrl.deleteWorkout(ctrl.workout)" type="button" name="button">DELETE</button>
+</div>

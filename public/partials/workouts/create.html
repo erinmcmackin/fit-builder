@@ -1,0 +1,24 @@
+<div class="workouts-create">
+  <form class="create-form" ng-submit="ctrl.createWorkout()">
+    <!-- TITLE -->
+    <label for="title">Title</label>
+    <input ng-model="ctrl.title" type="text" name="title"/>
+    <!-- INTENSITY-->
+    <label for="intensity">Intensity (1-10)</label>
+    <input ng-model="ctrl.intensity" type="number" name="intensity"/>
+    <!-- FOCUS -->
+    <label for="focus">Focus</label>
+    <input ng-model="ctrl.focus" type="text" name="focus"/>
+    <!-- DESCRIPTION -->
+    <label for="description">Description</label>
+    <input ng-model="ctrl.description" type="text" name="description"/>
+    <!-- IMAGE -->
+    <label for="image">Image URL</label>
+    <input ng-model="ctrl.image" type="text" name="image"/>
+    <!-- EXERCISES -->
+    <!-- <label for="exercise">Exercises</label>
+    <input ng-model="ctrl.exercise" type="text" name="exercise"/> -->
+    <!-- SUBMIT -->
+    <button type="submit">Add Workout</button>
+  </form>
+</div>
