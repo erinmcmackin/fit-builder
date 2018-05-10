@@ -56,8 +56,11 @@ class Workouts {
       $current_workout = new Workout(intval($data->id), $data->title, intval($data->intensity), $data->focus, $data->description, $data->image);
     }
 
-    return $current_workout;
+    // return $current_workout;
     // return $result;
+    // return $query;
+    return $data;
+    // return $workout_id_array[];
   }
 
   static function create($workout){
