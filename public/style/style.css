@@ -1,3 +1,52 @@
 * {
   border: 1px solid gold;
+  margin: 0;
+}
+
+/* =========== */
+/* HEADER */
+/* =========== */
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header h1 {
+  margin: 0;
+  justify-content: flex-start;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+.nav > ul > li {
+  padding-left: 20px;
+}
+
+/* =========== */
+/* WELCOME */
+/* =========== */
+
+.welcome-image{
+  width: 100%;
+  display: flex;
+  object-fit: contain;
+}
+
+.welcome-image > img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.welcome-image > h2 {
+  position: absolute;
+  z-index: 1;
+  font-size: 3em;
 }
