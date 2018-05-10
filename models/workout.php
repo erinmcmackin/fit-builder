@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . '/../database/db.php';
+$dbconn = include_once __DIR__ . '/../database/db.php';
 
 class Workout {
   public $id;
