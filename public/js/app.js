@@ -192,7 +192,7 @@ app.controller('FitBuilder', ['$http', function($http){
       }
     ).then((response)=>{
       this.getShowWorkout(this.workout);
-    }), (error)=>{error}
+    }), (error)=>{console.log(error)}
   }
 
   // =============
