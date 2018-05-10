@@ -1,5 +1,5 @@
 <?php
-$dbconn = include_once __DIR__ . '/../database/db.php';
+include_once __DIR__ . '/../database/db.php';
 
 class Exercise {
   public $id;
@@ -44,7 +44,7 @@ class Exercises {
     // declaring the sql statement in a separate file
     $query = file_get_contents(__DIR__ . '/../database/sql/exercises/find.sql');
     // $result = pg_query($conn, $query);
-    $result = pg_query($dbconn, $query);
+    $result = pg_query($query);
     $exercises = array();
     $current_exercise = null;
     // while there are results in the data fetch, keep running this code
