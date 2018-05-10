@@ -146,6 +146,7 @@ app.controller('FitBuilder', ['$http', function($http){
   }; // closes createWorkout
 
   this.getShowWorkout = (workout)=>{
+    console.log(workout);
     this.workout = workout;
     $http({
       method: 'GET',

@@ -49,3 +49,11 @@ INSERT INTO workouts (title, intensity, focus, description, image) VALUES ('Beyo
 // ==========
 
 CREATE TABLE joins (id SERIAL, workout_id INT, exercise_id INT);
+
+INSERT INTO joins (workout_id, exercise_id) VALUES (1, 2);
+INSERT INTO joins (workout_id, exercise_id) VALUES (1, 4);
+INSERT INTO joins (workout_id, exercise_id) VALUES (1, 5);
+INSERT INTO joins (workout_id, exercise_id) VALUES (1, 6);
+
+INSERT INTO joins (workout_id, exercise_id) VALUES (2, 4);
+INSERT INTO joins (workout_id, exercise_id) VALUES (2, 6);

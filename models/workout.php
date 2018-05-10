@@ -50,8 +50,14 @@ class Workouts {
     $result = pg_query_params($query, array($id));
     $current_workout = null;
     $data = pg_fetch_object($result);
-    $current_workout = new Workout(intval($data->id), $data->title, intval($data->intensity), $data->focus, $data->description, $data->image);
+    if($result["exercise_ex_id"]){
+      $current_workout = new Workout(intval($data->id), $data->title, intval($data->intensity), $data->focus, $data->description, $data->image, $data->exercise_ex_id);
+    } else {
+      $current_workout = new Workout(intval($data->id), $data->title, intval($data->intensity), $data->focus, $data->description, $data->image);
+    }
+
     return $current_workout;
+    // return $result;
   }
 
   static function create($workout){
