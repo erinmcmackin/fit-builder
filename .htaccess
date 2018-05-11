@@ -35,3 +35,21 @@ RewriteRule ^workouts/([0-9]+)$ controllers/workout.php?action=delete&id=$1
 
 RewriteCond %{REQUEST_METHOD} ^PUT$
 RewriteRule ^workouts/([0-9]+)$ controllers/workout.php?action=update&id=$1
+
+
+# ===========
+# JOIN ROUTES
+# ===========
+
+RewriteCond %{REQUEST_METHOD} ^POST$
+RewriteRule ^joins$ controllers/joins.php?action=post
+
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteRule ^joins/([0-9]+)$ controllers/join.php?action=new&id=$1
+RewriteRule ^joins$ controllers/joins.php?action=index
+
+RewriteCond %{REQUEST_METHOD} ^DELETE$
+RewriteRule ^joins/([0-9]+)$ controllers/joins.php?action=delete&id=$1
+
+RewriteCond %{REQUEST_METHOD} ^PUT$
+RewriteRule ^joins/([0-9]+)$ controllers/joins.php?action=update&id=$1
