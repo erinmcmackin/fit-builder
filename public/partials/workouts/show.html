@@ -25,6 +25,17 @@
       {{exercise.title}}
     </div>
   </div>
+  <button ng-click="ctrl.openAddExerciseToWorkout(ctrl.workout)" type="button" name="button">ADD EXERCISES</button>
   <button ng-click="ctrl.openWorkoutEdit(ctrl.workout)" type="button" name="button">EDIT</button>
   <button ng-click="ctrl.deleteWorkout(ctrl.workout)" type="button" name="button">DELETE</button>
+  <div ng-if="ctrl.showAddExercise" class="exercises-index">
+    <h1>Exercises</h1>
+    <input type="text" name="search" placeholder="search exercises" ng-model="searchBox">
+    <div ng-repeat="exercise in ctrl.exercises | filter:searchBox">
+      <div class="exercise-index-image">
+        <img ng-click="ctrl.addExerciseToWorkout(exercise)" ng-src="{{exercise.image}}"></img>
+        <button ng-click="ctrl.addExerciseToWorkout(exercise)" type="button" name="button">ADD THIS EXERCISE</button>
+      </div>
+    </div>
+  </div>
 </div>

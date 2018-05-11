@@ -7,6 +7,7 @@ app.controller('FitBuilder', ['$http', function($http){
   this.exercise = '';
   this.workout = '';
   this.workoutExercises = [];
+  this.showAddExercise = false;
 
   // =============
   // PATH INCLUDE
@@ -30,7 +31,6 @@ app.controller('FitBuilder', ['$http', function($http){
       method: 'GET',
       url: '/exercises'
     }).then((response)=>{
-      // console.log(response);
       this.exercises = response.data;
     }, (error)=>{
       console.log(error);
@@ -66,7 +66,6 @@ app.controller('FitBuilder', ['$http', function($http){
       method: 'GET',
       url: 'exercises/' + exercise.id
     }).then((response)=>{
-      console.log(response);
       this.exercise = response.data;
       this.includePath = './public/partials/exercises/show.html'
     }, (error)=>{
@@ -149,16 +148,13 @@ app.controller('FitBuilder', ['$http', function($http){
   }; // closes createWorkout
 
   this.getShowWorkout = (workout)=>{
-    console.log(workout);
     this.workout = workout;
     $http({
       method: 'GET',
       url: 'workouts/' + workout.id
     }).then((response)=>{
-      // console.log(response);
       this.workout = response.data;
       this.workoutExercises = response.data.exercises;
-      console.log(this.workoutExercises);
       this.includePath = './public/partials/workouts/show.html'
     }, (error)=>{
       console.log(error);
@@ -199,6 +195,32 @@ app.controller('FitBuilder', ['$http', function($http){
     ).then((response)=>{
       this.getShowWorkout(this.workout);
     }), (error)=>{console.log(error)}
+  }
+
+  // =============
+  // JOINS
+  // =============
+
+  this.openAddExerciseToWorkout = (workout)=>{
+    this.getExercises();
+    this.showAddExercise = true;
+  }
+
+  this.addExerciseToWorkout = (exercise)=>{
+    console.log(exercise);
+    this.exercise = exercise;
+    $http(
+      {
+        method: 'POST',
+        url: '/joins',
+        data: {
+          workout_id: this.workout.id,
+          exercise_id: this.exercise.id
+        }
+      }
+    ).then((response)=>{
+      this.getShowWorkout(this.workout);
+    }), (error)=>{error}
   }
 
   // =============
