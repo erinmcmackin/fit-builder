@@ -7,6 +7,7 @@ app.controller('FitBuilder', ['$http', function($http){
   this.exercise = '';
   this.workout = '';
   this.workoutExercises = [];
+  this.showAddExercise = false;
 
   // =============
   // PATH INCLUDE
@@ -149,7 +150,6 @@ app.controller('FitBuilder', ['$http', function($http){
   }; // closes createWorkout
 
   this.getShowWorkout = (workout)=>{
-    console.log(workout);
     this.workout = workout;
     $http({
       method: 'GET',
@@ -158,7 +158,6 @@ app.controller('FitBuilder', ['$http', function($http){
       // console.log(response);
       this.workout = response.data;
       this.workoutExercises = response.data.exercises;
-      console.log(this.workoutExercises);
       this.includePath = './public/partials/workouts/show.html'
     }, (error)=>{
       console.log(error);
@@ -199,6 +198,15 @@ app.controller('FitBuilder', ['$http', function($http){
     ).then((response)=>{
       this.getShowWorkout(this.workout);
     }), (error)=>{console.log(error)}
+  }
+
+  // =============
+  // JOINS
+  // =============
+
+  this.openAddExerciseToWorkout = (workout)=>{
+    this.getExercises();
+    this.showAddExercise = true;
   }
 
   // =============
