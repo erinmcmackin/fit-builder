@@ -1,6 +1,7 @@
 <?php
 include_once __DIR__ . '/../database/db.php';
 include_once __DIR__ . '/workout.php';
+include_once __DIR__ . '/join.php';
 
 class Exercise {
   public $id;
