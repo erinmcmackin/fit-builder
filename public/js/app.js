@@ -6,6 +6,7 @@ app.controller('FitBuilder', ['$http', function($http){
   this.includePath = './public/partials/welcome/welcome.html';
   this.exercise = '';
   this.workout = '';
+  this.workoutExercises = [];
 
   // =============
   // PATH INCLUDE
@@ -154,8 +155,10 @@ app.controller('FitBuilder', ['$http', function($http){
       method: 'GET',
       url: 'workouts/' + workout.id
     }).then((response)=>{
-      console.log(response);
+      // console.log(response);
       this.workout = response.data;
+      this.workoutExercises = response.data.exercises;
+      console.log(this.workoutExercises);
       this.includePath = './public/partials/workouts/show.html'
     }, (error)=>{
       console.log(error);

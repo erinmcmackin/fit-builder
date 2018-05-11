@@ -15,7 +15,7 @@ SELECT
   exercises.image AS exercise_image,
   joins.id AS joins_id,
   joins.exercise_id AS exercise_id,
-  joins.workout_id AS workout_id
+  joins.workout_id AS workout_join_id
 FROM
   workouts
 LEFT JOIN joins
