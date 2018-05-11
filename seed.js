@@ -6,7 +6,7 @@
 CREATE TABLE exercises (id int NOT NULL AUTO_INCREMENT, title VARCHAR(32), intensity TINYINT, focus TINYTEXT, description TEXT, image TEXT, PRIMARY KEY (ID));
 
 // PostgreSQL
-CREATE TABLE exercises (id SERIAL, title VARCHAR(32), intensity INT, focus EXT, description TEXT, image TEXT);
+CREATE TABLE exercises (id SERIAL, title VARCHAR(32), intensity INT, focus TEXT, description TEXT, image TEXT);
 
 INSERT INTO exercises (title, intensity, focus, description, image) VALUES ('Squat', 6, 'legs', 'feet hip-width and parallel, send seat back as if sitting in chair, do not extend knees past toes', 'https://media.self.com/photos/57da2eaa46d0cb351c8c7ebc/4:3/w_728,c_limit/correct-squat_feat.jpg');
 

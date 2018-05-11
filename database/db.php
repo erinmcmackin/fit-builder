@@ -14,6 +14,7 @@
       "port=".$port." ".
       "dbname=".$dbname
     );
+    // $dbconn = pg_connect(getenv('DATABASE_URL'));
   } else {
     $dbconn = pg_connect("host=localhost dbname=fit_builder");
   }

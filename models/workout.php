@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__ . '/../database/db.php';
+include_once __DIR__ . '/exercise.php';
 
 class Workout {
   public $id;
@@ -26,10 +27,10 @@ class Workout {
 class Workouts {
   static function find(){
     // good practice to include $conn parameter to pg_query to prevent weird bugs
-    $conn = pg_connect("dbname=fit_builder");
-    // declaring the sql statement in a separate file
+    // $conn = pg_connect("dbname=fit_builder");
     $query = file_get_contents(__DIR__ . '/../database/sql/workouts/find.sql');
-    $result = pg_query($conn, $query);
+    $result = pg_query($query);
+    // $result = pg_query($conn, $query);
     $workouts = array();
     $current_workout = null;
     // while there are results in the data fetch, keep running this code
@@ -49,18 +50,21 @@ class Workouts {
     $query = file_get_contents(__DIR__ . '/../database/sql/workouts/show.sql');
     $result = pg_query_params($query, array($id));
     $current_workout = null;
-    $data = pg_fetch_object($result);
-    if($result["exercise_ex_id"]){
-      $current_workout = new Workout(intval($data->id), $data->title, intval($data->intensity), $data->focus, $data->description, $data->image, $data->exercise_ex_id);
-    } else {
-      $current_workout = new Workout(intval($data->id), $data->title, intval($data->intensity), $data->focus, $data->description, $data->image);
+    $workouts = array();
+    // even though pulling just one workout, the while loop allows me to pull all exercises
+    while($data = pg_fetch_object($result)){
+      if($current_workout->id !== intval($data->workout_id)){
+        $current_workout = new Workout(intval($data->workout_id), $data->workout_title, intval($data->workout_intensity), $data->workout_focus, $data->workout_description, $data->workout_image);
+        $current_workout->exercises = [];
+      }
+      if($data->joins_id){
+        $new_exercise = new Exercise(intval($data->exercise_ex_id), $data->exercise_title, intval($data->exercise_intensity), $data->exercise_focus, $data->exercise_description, $data->exercise_image);
+        
+        $current_workout->exercises[] = $new_exercise;
+      }
     }
-
-    // return $current_workout;
-    // return $result;
-    // return $query;
-    return $data;
-    // return $workout_id_array[];
+    return $current_workout;
+    echo $result;
   }
 
   static function create($workout){

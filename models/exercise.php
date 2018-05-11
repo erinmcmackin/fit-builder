@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__ . '/../database/db.php';
+include_once __DIR__ . '/workout.php';
 
 class Exercise {
   public $id;
@@ -21,10 +22,10 @@ class Exercise {
 class Exercises {
   static function find(){
     // good practice to include $conn parameter to pg_query to prevent weird bugs
-    $conn = pg_connect("dbname=fit_builder");
-    // declaring the sql statement in a separate file
+    // $conn = pg_connect("dbname=fit_builder");
     $query = file_get_contents(__DIR__ . '/../database/sql/exercises/find.sql');
-    $result = pg_query($conn, $query);
+    // $result = pg_query($conn, $query);
+    $result = pg_query($query);
     $exercises = array();
     $current_exercise = null;
     // while there are results in the data fetch, keep running this code
