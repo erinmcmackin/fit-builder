@@ -59,7 +59,7 @@ class Workouts {
       }
       if($data->joins_id){
         $new_exercise = new Exercise(intval($data->exercise_ex_id), $data->exercise_title, intval($data->exercise_intensity), $data->exercise_focus, $data->exercise_description, $data->exercise_image);
-
+        
         $current_workout->exercises[] = $new_exercise;
       }
     }
