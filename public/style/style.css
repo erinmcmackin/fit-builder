@@ -23,30 +23,33 @@ font-family: 'Hind Siliguri', sans-serif; */
 
 .header h1 {
   margin: 0;
+  padding: 10px;
   justify-content: flex-start;
   font-family: 'Poiret One', cursive;
   font-weight: bold;
   font-size: 3em;
 }
 
-.nav > ul > li :hover {
-  color: red;
-}
-
-nav {
+.nav {
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
 }
 
-.nav ul {
+.nav > ul {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
   list-style: none;
-  align-items: center;
+  flex-wrap: wrap;
 }
 
 .nav > ul > li {
   padding-left: 20px;
+  font-size: 20px;
+}
+
+.nav > ul > li:hover {
+  color: red;
 }
 
 /* =========== */
@@ -75,9 +78,16 @@ nav {
   padding-right: 15%;
 }
 
-.sessions-footer{
+.sessions-footer {
   display: flex;
   justify-content: center;
+}
+
+.sessions-footer > button {
+  width: 300px;
+  height: 50px;
+  margin: 10px 30px;
+  font-size: 20px;
 }
 
 /* =========== */
@@ -86,4 +96,56 @@ nav {
 
 footer {
   text-align: center;
+}
+
+/* =========== */
+/* EXERCISE AND WORKOUT INDEX */
+/* =========== */
+
+.exercises-index, .workouts-index {
+  text-align: center;
+}
+
+.exercise-index-card-container, .workout-index-card-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.exercise-index-card, .workout-index-card {
+  margin: 5px;
+  flex-direction: column;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.exercise-index-card > img, .workout-index-card > img  {
+  /* width: 300px; */
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* =========== */
+/* WORKOUT */
+/* =========== */
+
+/* ADD EXERCISES */
+
+.exercise-index-card-workouts {
+  margin: 5px;
+  flex-direction: column;
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.exercise-index-card-workouts > img {
+  /* width: 300px; */
+  object-fit: cover;
+  object-position: center;
+  height: 80%;
+  width: 100%;
 }
