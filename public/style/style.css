@@ -3,6 +3,14 @@
   margin: 0;
 }
 
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+  background-color: #D5D5D5;
+}
+
+/* font-family: 'Poiret One', cursive;
+font-family: 'Hind Siliguri', sans-serif; */
+
 /* =========== */
 /* HEADER */
 /* =========== */
@@ -16,6 +24,17 @@
 .header h1 {
   margin: 0;
   justify-content: flex-start;
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
+  font-size: 3em;
+}
+
+.nav > ul > li :hover {
+  color: red;
+}
+
+nav {
+  align-items: center;
 }
 
 .nav ul {
@@ -23,6 +42,7 @@
   flex-direction: row;
   justify-content: flex-end;
   list-style: none;
+  align-items: center;
 }
 
 .nav > ul > li {
@@ -37,6 +57,7 @@
   width: 100%;
   display: flex;
   object-fit: contain;
+  align-items: center;
 }
 
 .welcome-image > img {
@@ -48,5 +69,21 @@
 .welcome-image > h2 {
   position: absolute;
   z-index: 1;
-  font-size: 3em;
+  color: white;
+  font-size: 2em;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.sessions-footer{
+  display: flex;
+  justify-content: center;
+}
+
+/* =========== */
+/* FOOTER */
+/* =========== */
+
+footer {
+  text-align: center;
 }
