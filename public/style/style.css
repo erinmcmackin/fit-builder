@@ -1,5 +1,5 @@
 * {
-  border: 1px solid gold;
+  /* border: 1px solid gold; */
   margin: 0;
 }
 
@@ -19,6 +19,7 @@ font-family: 'Hind Siliguri', sans-serif; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-right: 10px;
 }
 
 .header h1 {
@@ -28,12 +29,14 @@ font-family: 'Hind Siliguri', sans-serif; */
   font-family: 'Poiret One', cursive;
   font-weight: bold;
   font-size: 3em;
+  color: #065A82;
 }
 
 .nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  color: #1C7293;
 }
 
 .nav > ul {
@@ -56,20 +59,25 @@ font-family: 'Hind Siliguri', sans-serif; */
 /* WELCOME */
 /* =========== */
 
-.welcome-image{
+.welcome-message {
   width: 100%;
   display: flex;
   object-fit: contain;
   align-items: center;
 }
 
-.welcome-image > img {
+.welcome-message > h2 > span {
+  /* color: #9EB3C2; */
+  /* text-shadow: 3px 3px #9EB3C2; */
+}
+
+.welcome-message > img {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-.welcome-image > h2 {
+.welcome-message > h2 {
   position: absolute;
   z-index: 1;
   color: white;
@@ -86,16 +94,11 @@ font-family: 'Hind Siliguri', sans-serif; */
 .sessions-footer > button {
   width: 300px;
   height: 50px;
-  margin: 10px 30px;
+  margin: 15px 20px;
   font-size: 20px;
-}
-
-/* =========== */
-/* FOOTER */
-/* =========== */
-
-footer {
-  text-align: center;
+  color: #9EB3C2;
+  border: 1px solid #9EB3C2;
+  border-radius: 3px;
 }
 
 /* =========== */
@@ -106,18 +109,72 @@ footer {
   text-align: center;
 }
 
+.execises-index-header, .workouts-index-header {
+  background-image: url('./../images/weights.jpg');
+  background-size: cover;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  border-top: 2px solid lightgray;
+  border-bottom: 2px solid #BDBDBD;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.execises-index-header > h1, .workouts-index-header > h1 {
+  color: white;
+  font-size: 40px;
+}
+
 .exercise-index-card-container, .workout-index-card-container {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  background-color: #BDBDBD;
+}
+
+.execises-index-header > input, .workouts-index-header > input {
+  width: 150px;
+  height: 30px;
+  /* margin: 15px 20px; */
+  font-size: 14px;
+  color: #9EB3C2;
+  border: none;
+  text-align: center;
+  /* border: 1px solid #9EB3C2;
+  border-radius: 3px; */
+}
+
+.execises-index-header > button, .workouts-index-header > button {
+  width: 150px;
+  height: 30px;
+  /* margin: 15px 20px; */
+  font-size: 14px;
+  background-color: #9EB3C2;
+  /* background-color: #1C7293; */
+  color: white;
+  border: 1px solid #9EB3C2;
+  border-radius: 3px;
+  margin-top: 5px;
 }
 
 .exercise-index-card, .workout-index-card {
-  margin: 5px;
+  margin: 7px;
   flex-direction: column;
   width: 300px;
   height: 300px;
   overflow: hidden;
+}
+
+.exercise-index-card > h3, .workout-index-card > h3 {
+  color: white;
+  margin: 5px;
+  background-image: url('../images/weights-crop.jpg');
+  background-size: cover;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .exercise-index-card > img, .workout-index-card > img  {
@@ -177,4 +234,21 @@ footer {
   object-position: center;
   height: 80%;
   width: 100%;
+}
+
+
+/* =========== */
+/* FOOTER */
+/* =========== */
+
+footer {
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  color: #065A82;
+}
+
+.punt-mark {
+  padding-bottom: 10px;
 }

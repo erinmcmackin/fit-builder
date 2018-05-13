@@ -11,6 +11,5 @@
   <body ng-controller="FitBuilder as ctrl">
     <div ng-include="'./public/partials/header-nav.html'"></div>
     <div ng-include="ctrl.includePath"></div>
-    <div ng-include="'./public/partials/footer.html'"></div>
   </body>
 </html>
