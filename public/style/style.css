@@ -129,8 +129,37 @@ footer {
 }
 
 /* =========== */
-/* WORKOUT */
+/* WORKOUT & EXERCISE SHOW */
 /* =========== */
+
+.workouts-show, .exercises-show {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.workout-show-left, .exercise-show-left {
+  width: 48%;
+}
+
+.workout-show-left > img, .exercise-show-left > img {
+  width: 100%;
+}
+
+.workout-show-right, .exercise-show-right {
+  width: 48%;
+}
+
+
+/* =========== */
+/* WORKOUT EXERCISES */
+/* =========== */
+
+.workout-exercises {
+  width: 100%;
+  color: red;
+}
 
 /* ADD EXERCISES */
 
