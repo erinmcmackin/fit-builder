@@ -1,9 +1,12 @@
 <div class="workouts-index">
-  <h1>Workouts</h1>
-  <input type="text" name="search" placeholder="search workouts" ng-model="searchBox">
-  <button ng-click="ctrl.changeInclude('workouts/create')" type="button" name="button">ADD WORKOUT</button>
-  <div ng-repeat="workout in ctrl.workouts | filter:searchBox">
-    <div ng-click="ctrl.getShowWorkout(workout)" class="workout-index-image">
+  <div class="workouts-index-header">
+    <h1>Workouts</h1>
+    <input type="text" name="search" placeholder="search" ng-model="searchBox">
+    <button ng-click="ctrl.changeInclude('workouts/create')" type="button" name="button">ADD WORKOUT</button>
+  </div>
+  <div class="workout-index-card-container">
+    <div  ng-repeat="workout in ctrl.workouts | filter:searchBox" ng-click="ctrl.getShowWorkout(workout)" class="workout-index-card">
+      <h3>{{workout.title}}</h3>
       <img ng-src="{{workout.image}}"></img>
     </div>
   </div>
