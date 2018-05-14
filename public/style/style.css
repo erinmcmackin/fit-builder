@@ -358,9 +358,10 @@ font-family: 'Hind Siliguri', sans-serif; */
 }
 
 .exercises-create button, .workouts-create button {
-  width: 200px;
+  width: 500px;
   height: 30px;
-  margin: 15px 20px;
+  /* margin: 15px 20px; */
+  margin-top: 15px;
   font-size: 14px;
   color: #9EB3C2;
   border: 1px solid #9EB3C2;
@@ -376,6 +377,17 @@ font-family: 'Hind Siliguri', sans-serif; */
   color: #9EB3C2;
   border: none;
   text-align: center;
+}
+
+.exercises-edit button, .workouts-edit button {
+  width: 500px;
+  height: 30px;
+  /* margin: 15px 20px; */
+  margin-top: 15px;
+  font-size: 14px;
+  color: #9EB3C2;
+  border: 1px solid #9EB3C2;
+  border-radius: 3px;
 }
 
 /* .description input{
