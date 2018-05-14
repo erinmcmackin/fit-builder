@@ -1,24 +1,28 @@
 <div class="exercises-show">
-  <h1>{{ctrl.exercise.title}}</h1>
-  <img ng-src="{{ctrl.exercise.image}}"></img>
-  <div>
-    Intensity
-    <div>
-      {{ctrl.exercise.intensity}}
-    </div>
+  <div class="exercise-show-left">
+    <img ng-src="{{ctrl.exercise.image}}"></img>
   </div>
-  <div>
-    Focus
-    <div>
-      {{ctrl.exercise.focus}}
-    </div>
+  <div class="exercise-show-right">
+    <h2>{{ctrl.exercise.title}}</h2>
+      <div>
+        <h4>Intensity</h4>
+        <div>
+          <p>{{ctrl.exercise.intensity}}</p>
+        </div>
+      </div>
+      <div>
+        <h4>Focus</h4>
+        <div>
+          <p>{{ctrl.exercise.focus}}</p>
+        </div>
+      </div>
+      <div>
+        <h4>How To</h4>
+        <div>
+          <p>{{ctrl.exercise.description}}</p>
+        </div>
+      </div>
+      <button ng-click="ctrl.openExerciseEdit(ctrl.exercise)" type="button" name="button">EDIT</button>
+      <button ng-click="ctrl.deleteExercise(ctrl.exercise)" type="button" name="button">DELETE</button>
   </div>
-  <div>
-    How To
-    <div>
-      {{ctrl.exercise.description}}
-    </div>
-  </div>
-  <button ng-click="ctrl.openExerciseEdit(ctrl.exercise)" type="button" name="button">EDIT</button>
-  <button ng-click="ctrl.deleteExercise(ctrl.exercise)" type="button" name="button">DELETE</button>
 </div>

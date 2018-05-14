@@ -1,39 +1,47 @@
 <div class="workouts-show">
-  <h1>{{ctrl.workout.title}}</h1>
-  <img ng-src="{{ctrl.workout.image}}"></img>
-  <div>
-    Intensity
+  <!-- <div class="show-right-left"> -->
+    <div class="workout-show-left">
+      <img ng-src="{{ctrl.workout.image}}"></img>
+    </div>
+    <div class="workout-show-right">
+      <h2>{{ctrl.workout.title}}</h2>
+      <div>
+        <h4>Intensity</h4>
+        <div>
+          <p>{{ctrl.workout.intensity}}</p>
+        </div>
+      </div>
+      <div>
+        <h4>Focus</h4>
+        <div>
+          <p>{{ctrl.workout.focus}}</p>
+        </div>
+      </div>
+      <div>
+        <h4>Description</h4>
+        <div>
+          <p>{{ctrl.workout.description}}</p>
+        </div>
+      </div>
+      <button ng-click="ctrl.openWorkoutEdit(ctrl.workout)" type="button" name="button">EDIT</button>
+      <button ng-click="ctrl.deleteWorkout(ctrl.workout)" type="button" name="button">DELETE</button>
+    </div>
+  <!-- </div> -->
+  <div class="workout-exercises">
     <div>
-      {{ctrl.workout.intensity}}
+      <h3>Exercises</h3>
+      <div ng-repeat="exercise in ctrl.workoutExercises">
+        <h4>{{exercise.title}}</h4>
+      </div>
+      <button ng-click="ctrl.openAddExerciseToWorkout(ctrl.workout)" type="button" name="button">ADD EXERCISES</button>
     </div>
-  </div>
-  <div>
-    Focus
-    <div>
-      {{ctrl.workout.focus}}
-    </div>
-  </div>
-  <div>
-    How To
-    <div>
-      {{ctrl.workout.description}}
-    </div>
-  </div>
-  <div>
-    Exercises
-    <div ng-repeat="exercise in ctrl.workoutExercises">
-      {{exercise.title}}
-    </div>
-  </div>
-  <button ng-click="ctrl.openAddExerciseToWorkout(ctrl.workout)" type="button" name="button">ADD EXERCISES</button>
-  <button ng-click="ctrl.openWorkoutEdit(ctrl.workout)" type="button" name="button">EDIT</button>
-  <button ng-click="ctrl.deleteWorkout(ctrl.workout)" type="button" name="button">DELETE</button>
   <div ng-if="ctrl.showAddExercise" class="exercises-index">
     <h1>Exercises</h1>
     <input type="text" name="search" placeholder="search exercises" ng-model="searchBox">
-    <div ng-repeat="exercise in ctrl.exercises | filter:searchBox">
-      <div class="exercise-index-image">
-        <img ng-click="ctrl.addExerciseToWorkout(exercise)" ng-src="{{exercise.image}}"></img>
+    <div class="exercise-index-card-container">
+      <div ng-repeat="exercise in ctrl.exercises | filter:searchBox" class="exercise-index-card-workouts">
+        <h3>{{exercise.title}}</h3>
+        <img ng-src="{{exercise.image}}"></img>
         <button ng-click="ctrl.addExerciseToWorkout(exercise)" type="button" name="button">ADD THIS EXERCISE</button>
       </div>
     </div>

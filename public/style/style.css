@@ -1,7 +1,15 @@
 * {
-  border: 1px solid gold;
+  /* border: 1px solid gold; */
   margin: 0;
 }
+
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+  background-color: #D5D5D5;
+}
+
+/* font-family: 'Poiret One', cursive;
+font-family: 'Hind Siliguri', sans-serif; */
 
 /* =========== */
 /* HEADER */
@@ -11,42 +19,429 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-right: 10px;
 }
 
 .header h1 {
   margin: 0;
+  padding: 10px;
   justify-content: flex-start;
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
+  font-size: 3em;
+  color: #065A82;
 }
 
-.nav ul {
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #1C7293;
+}
+
+.nav > ul {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
   list-style: none;
+  flex-wrap: wrap;
 }
 
 .nav > ul > li {
   padding-left: 20px;
+  font-size: 20px;
+}
+
+.nav > ul > li:hover {
+  color: white;
+  cursor: pointer;
 }
 
 /* =========== */
 /* WELCOME */
 /* =========== */
 
-.welcome-image{
+.welcome-message {
   width: 100%;
   display: flex;
   object-fit: contain;
+  align-items: center;
 }
 
-.welcome-image > img {
+.welcome-message > h2 > span {
+  /* color: #9EB3C2; */
+  /* text-shadow: 3px 3px #9EB3C2; */
+}
+
+.welcome-message > img {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-.welcome-image > h2 {
+.welcome-message > h2 {
   position: absolute;
   z-index: 1;
-  font-size: 3em;
+  color: white;
+  font-size: 2em;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.sessions-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.sessions-footer > button {
+  width: 300px;
+  height: 50px;
+  margin: 15px 20px;
+  font-size: 20px;
+  color: #9EB3C2;
+  border: 1px solid #9EB3C2;
+  border-radius: 3px;
+}
+
+/* =========== */
+/* EXERCISE AND WORKOUT INDEX */
+/* =========== */
+
+.exercises-index, .workouts-index {
+  text-align: center;
+}
+
+.execises-index-header, .workouts-index-header {
+  background-image: url('./../images/weights.jpg');
+  background-size: cover;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  border-top: 2px solid lightgray;
+  border-bottom: 2px solid #BDBDBD;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.execises-index-header > h1, .workouts-index-header > h1 {
+  color: white;
+  font-size: 40px;
+}
+
+.exercise-index-card-container, .workout-index-card-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  background-color: #BDBDBD;
+}
+
+.execises-index-header > input, .workouts-index-header > input {
+  width: 150px;
+  height: 30px;
+  /* margin: 15px 20px; */
+  font-size: 14px;
+  color: #9EB3C2;
+  border: none;
+  text-align: center;
+  /* border: 1px solid #9EB3C2;
+  border-radius: 3px; */
+}
+
+.execises-index-header > button, .workouts-index-header > button {
+  width: 150px;
+  height: 30px;
+  /* margin: 15px 20px; */
+  font-size: 14px;
+  background-color: #9EB3C2;
+  /* background-color: #1C7293; */
+  color: white;
+  border: 1px solid #9EB3C2;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+.exercise-index-card, .workout-index-card {
+  margin: 7px;
+  flex-direction: column;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  transition: transform .2s;
+}
+
+.exercise-index-card > h3, .workout-index-card > h3 {
+  color: white;
+  margin: 5px;
+  background-image: url('../images/weights-crop.jpg');
+  background-size: cover;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.exercise-index-card > img, .workout-index-card > img  {
+  /* width: 300px; */
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.exercise-index-card:hover , .workout-index-card:hover {
+  transform: scale(1.1);
+}
+
+/* =========== */
+/* WORKOUT & EXERCISE SHOW */
+/* =========== */
+
+.workouts-show, .exercises-show {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  color: #065A82;
+}
+
+/* .show-right-left {
+  flex-flow: column;
+  height: 300px;
+  width: 100%;
+  padding: 0;
+} */
+
+.workout-show-left, .exercise-show-left {
+  /* padding: 0; */
+  width: 50%;
+  /* flex-grow: 1; */
+  height: 400px;
+  /* height: 50%; */
+  /* overflow: hidden; */
+}
+
+.workout-show-left > img, .exercise-show-left > img {
+  width: 100%;
+  height: 100%;
+  /* overflow: hidden; */
+  object-fit: cover;
+}
+
+.workout-show-right, .exercise-show-right {
+  /* padding: 0; */
+  /* flex-grow: 1; */
+  width: 50%;
+  height: 400px;
+  /* height: 50%; */
+  background-color: #BDBDBD;
+  align-items: center;
+  justify-content: center;
+}
+
+@media all and (min-width: 600px) {
+  .workouts-show {flex: 1 auto;}
+  .exercises-show {flex: 1 auto;}
+}
+
+@media all and (min-width: 800px) {
+  .workout-show-left {order: 1;}
+  .workout-show-right {order: 2;}
+  .workout-exercises {order: 3;}
+}
+
+.workout-show-right h2, .exercise-show-right h2 {
+  /* margin-left: 15px;
+  margin-top: 15px; */
+  margin: 15px;
+  font-size: 30px;
+}
+
+.workout-show-right h4, .exercise-show-right h4 {
+  margin-left: 15px;
+  font-size: 18px;
+}
+
+.workout-show-right p, .exercise-show-right p {
+  margin-left: 15px;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.workout-show-right button, .exercise-show-right button {
+  margin-left: 15px;
+  width: 100px;
+  height: 30px;
+  /* margin: 15px 20px; */
+  font-size: 14px;
+  background-color: #9EB3C2;
+  /* background-color: #1C7293; */
+  color: white;
+  border: 1px solid #9EB3C2;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+/* =========== */
+/* WORKOUT EXERCISES */
+/* =========== */
+
+.workout-exercises {
+  width: 100%;
+  color: #065A82;
+}
+
+/* ADD EXERCISES */
+
+.exercise-index-card-workouts {
+  margin: 5px;
+  flex-direction: column;
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.exercise-index-card-workouts > img {
+  /* width: 300px; */
+  object-fit: cover;
+  object-position: center;
+  height: 80%;
+  width: 100%;
+}
+
+.workout-exercises h3 {
+  /* margin-left: 15px;
+  margin-top: 15px; */
+  margin: 15px;
+  font-size: 25px;
+}
+
+.workout-exercises h4 {
+  /* margin-left: 15px;
+  margin-top: 15px; */
+  margin: 15px;
+  font-size: 18px;
+}
+
+.workout-exercises button {
+  width: 200px;
+  height: 30px;
+  margin: 15px 20px;
+  font-size: 14px;
+  color: #9EB3C2;
+  border: 1px solid #9EB3C2;
+  border-radius: 3px;
+}
+
+/* =========== */
+/* CREATE */
+/* =========== */
+
+.exercises-create, .workouts-create {
+  margin: 15px;
+}
+
+.create-form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exercises-create h1, .workouts-create h1 {
+  color: #065A82;
+  text-align: center;
+}
+
+.exercises-create label, .workouts-create label {
+  color: #065A82;
+  line-height: 3;
+  font-size: 18px;
+}
+
+.exercises-create button, .workouts-create button {
+  width: 200px;
+  height: 30px;
+  margin: 15px 20px;
+  font-size: 14px;
+  color: #9EB3C2;
+  border: 1px solid #9EB3C2;
+  border-radius: 3px;
+}
+
+.exercises-create input, .workouts-create input {
+  /* width: 150px;
+  height: 30px; */
+  width: 500px;
+  height: 25px;
+  font-size: 14px;
+  color: #9EB3C2;
+  border: none;
+  text-align: center;
+}
+
+/* .description input{
+  height: 500px;
+} */
+
+/* =========== */
+/* EDIT */
+/* =========== */
+
+.exercises-edit, .workouts-edit {
+  margin: 15px;
+}
+
+.exercises-edit h1, .workouts-edit h1 {
+  color: #065A82;
+  text-align: center;
+}
+
+.edit-exercise-form, .edit-workout-form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exercises-edit label, .workouts-edit label {
+  color: #065A82;
+  line-height: 3;
+  font-size: 18px;
+}
+
+.exercises-edit button, .workouts-edit button {
+  width: 500px;
+  height: 30px;
+  /* margin: 15px 20px; */
+  margin-top: 15px;
+  font-size: 14px;
+  color: #9EB3C2;
+  border: 1px solid #9EB3C2;
+  border-radius: 3px;
+}
+
+.exercises-edit input, .workouts-edit input {
+  /* width: 150px;
+  height: 30px; */
+  width: 500px;
+  height: 25px;
+  font-size: 14px;
+  color: #9EB3C2;
+  border: none;
+  text-align: center;
+}
+
+/* =========== */
+/* FOOTER */
+/* =========== */
+
+footer {
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  color: #065A82;
+}
+
+.punt-mark {
+  padding-bottom: 10px;
 }
