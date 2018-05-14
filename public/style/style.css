@@ -284,6 +284,10 @@ font-family: 'Hind Siliguri', sans-serif; */
 /* WORKOUT EXERCISES */
 /* =========== */
 
+/* .exercise-index-card-container {
+  height: 600px;
+} */
+
 .workout-exercises {
   width: 100%;
   color: #065A82;
@@ -295,7 +299,7 @@ font-family: 'Hind Siliguri', sans-serif; */
   margin: 5px;
   flex-direction: column;
   width: 300px;
-  height: 400px;
+  height: 500px;
   overflow: hidden;
 }
 
@@ -303,7 +307,7 @@ font-family: 'Hind Siliguri', sans-serif; */
   /* width: 300px; */
   object-fit: cover;
   object-position: center;
-  height: 80%;
+  height: 70%;
   width: 100%;
 }
 
