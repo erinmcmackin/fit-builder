@@ -1,4 +1,5 @@
 <div class="exercises-create">
+  <h1>Create Exercise</h1>
   <form class="create-form" ng-submit="ctrl.createExercise()">
     <!-- TITLE -->
     <label for="title">Title</label>
@@ -11,7 +12,7 @@
     <input ng-model="ctrl.focus" type="text" name="focus"/>
     <!-- DESCRIPTION -->
     <label for="description">How To</label>
-    <input ng-model="ctrl.description" type="text" name="description"/>
+    <input class="description" ng-model="ctrl.description" type="text" name="description"/>
     <!-- IMAGE -->
     <label for="image">Image URL</label>
     <input ng-model="ctrl.image" type="text" name="image"/>

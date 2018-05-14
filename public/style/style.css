@@ -52,7 +52,7 @@ font-family: 'Hind Siliguri', sans-serif; */
 }
 
 .nav > ul > li:hover {
-  color: red;
+  color: white;
   cursor: pointer;
 }
 
@@ -329,6 +329,105 @@ font-family: 'Hind Siliguri', sans-serif; */
   color: #9EB3C2;
   border: 1px solid #9EB3C2;
   border-radius: 3px;
+}
+
+/* =========== */
+/* CREATE */
+/* =========== */
+
+.exercises-create, .workouts-create {
+  margin: 15px;
+}
+
+.create-form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exercises-create h1, .workouts-create h1 {
+  color: #065A82;
+  text-align: center;
+}
+
+.exercises-create label, .workouts-create label {
+  color: #065A82;
+  line-height: 3;
+  font-size: 18px;
+}
+
+.exercises-create button, .workouts-create button {
+  width: 200px;
+  height: 30px;
+  margin: 15px 20px;
+  font-size: 14px;
+  color: #9EB3C2;
+  border: 1px solid #9EB3C2;
+  border-radius: 3px;
+}
+
+.exercises-create input, .workouts-create input {
+  /* width: 150px;
+  height: 30px; */
+  width: 500px;
+  height: 25px;
+  font-size: 14px;
+  color: #9EB3C2;
+  border: none;
+  text-align: center;
+}
+
+/* .description input{
+  height: 500px;
+} */
+
+/* =========== */
+/* EDIT */
+/* =========== */
+
+.exercises-edit, .workouts-edit {
+  margin: 15px;
+}
+
+.exercises-edit h1, .workouts-edit h1 {
+  color: #065A82;
+  text-align: center;
+}
+
+.edit-exercise-form, .edit-workout-form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exercises-edit label, .workouts-edit label {
+  color: #065A82;
+  line-height: 3;
+  font-size: 18px;
+}
+
+.exercises-edit button, .workouts-edit button {
+  width: 500px;
+  height: 30px;
+  /* margin: 15px 20px; */
+  margin-top: 15px;
+  font-size: 14px;
+  color: #9EB3C2;
+  border: 1px solid #9EB3C2;
+  border-radius: 3px;
+}
+
+.exercises-edit input, .workouts-edit input {
+  /* width: 150px;
+  height: 30px; */
+  width: 500px;
+  height: 25px;
+  font-size: 14px;
+  color: #9EB3C2;
+  border: none;
+  text-align: center;
 }
 
 /* =========== */
