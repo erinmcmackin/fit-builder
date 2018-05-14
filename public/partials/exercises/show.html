@@ -4,27 +4,25 @@
   </div>
   <div class="exercise-show-right">
     <h2>{{ctrl.exercise.title}}</h2>
-    <div class="exercise-show-right">
       <div>
-        Intensity
+        <h4>Intensity</h4>
         <div>
-          {{ctrl.exercise.intensity}}
+          <p>{{ctrl.exercise.intensity}}</p>
         </div>
       </div>
       <div>
-        Focus
+        <h4>Focus</h4>
         <div>
-          {{ctrl.exercise.focus}}
+          <p>{{ctrl.exercise.focus}}</p>
         </div>
       </div>
       <div>
-        How To
+        <h4>How To</h4>
         <div>
-          {{ctrl.exercise.description}}
+          <p>{{ctrl.exercise.description}}</p>
         </div>
       </div>
       <button ng-click="ctrl.openExerciseEdit(ctrl.exercise)" type="button" name="button">EDIT</button>
       <button ng-click="ctrl.deleteExercise(ctrl.exercise)" type="button" name="button">DELETE</button>
-    </div>
   </div>
 </div>

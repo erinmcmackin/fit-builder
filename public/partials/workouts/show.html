@@ -1,34 +1,37 @@
 <div class="workouts-show">
-  <div class="workout-show-left">
-    <img ng-src="{{ctrl.workout.image}}"></img>
-  </div>
-  <div class="workout-show-right">
-    <h2>{{ctrl.workout.title}}</h2>
-    <div>
-      Intensity
-      <div>
-        {{ctrl.workout.intensity}}
-      </div>
+  <!-- <div class="show-right-left"> -->
+    <div class="workout-show-left">
+      <img ng-src="{{ctrl.workout.image}}"></img>
     </div>
-    <div>
-      Focus
+    <div class="workout-show-right">
+      <h2>{{ctrl.workout.title}}</h2>
       <div>
-        {{ctrl.workout.focus}}
+        <h4>Intensity</h4>
+        <div>
+          <p>{{ctrl.workout.intensity}}</p>
+        </div>
       </div>
-    </div>
-    <div>
-      Description
       <div>
-        {{ctrl.workout.description}}
+        <h4>Focus</h4>
+        <div>
+          <p>{{ctrl.workout.focus}}</p>
+        </div>
       </div>
+      <div>
+        <h4>Description</h4>
+        <div>
+          <p>{{ctrl.workout.description}}</p>
+        </div>
+      </div>
+      <button ng-click="ctrl.openWorkoutEdit(ctrl.workout)" type="button" name="button">EDIT</button>
+      <button ng-click="ctrl.deleteWorkout(ctrl.workout)" type="button" name="button">DELETE</button>
     </div>
-    <button ng-click="ctrl.openWorkoutEdit(ctrl.workout)" type="button" name="button">EDIT</button>
-    <button ng-click="ctrl.deleteWorkout(ctrl.workout)" type="button" name="button">DELETE</button>
-  </div class="workout-exercises">
+  <!-- </div> -->
+  <div class="workout-exercises">
     <div>
       <h3>Exercises</h3>
       <div ng-repeat="exercise in ctrl.workoutExercises">
-        {{exercise.title}}
+        <h4>{{exercise.title}}</h4>
       </div>
       <button ng-click="ctrl.openAddExerciseToWorkout(ctrl.workout)" type="button" name="button">ADD EXERCISES</button>
     </div>
